@@ -6,6 +6,7 @@ flask-restplus
 
 SQLAlchemy      
 
+paho-mqtt
 python-dotenv
 passlib
 bcrypt

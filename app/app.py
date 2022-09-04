@@ -5,6 +5,7 @@ from models import db
 from routes.api import api_route
 from routes.api.UserRoute import user_route
 from routes.api.AuthRoute import auth_route
+from routes.api.MqttRoute import mqtt_route
 
 from routes.web import web_route
 from config import AppConfig
@@ -24,6 +25,7 @@ api_doc(app, config_path='utils/doc.yaml', url_prefix='/api/doc', title='API doc
 app.register_blueprint(api_route, url_prefix='/api')
 app.register_blueprint(auth_route, url_prefix='/api/auth')
 app.register_blueprint(user_route, url_prefix='/api/users')
+app.register_blueprint(mqtt_route, url_prefix='/api/mqtt')
 
 
 ### ROUTE WEB ###
