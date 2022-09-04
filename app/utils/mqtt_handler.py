@@ -26,27 +26,19 @@ def subscribe(client, topic):
 
 
 def publish_mqtt(client, topic, message):
-   try:
-      pub = client.publish(topic, message)
-      result = {
-         "success" : True,
-         "topic" : topic,
-         "message" : message
-      }
-   except Exception as err:
-      result = {
-         "success" : False,
-         "topic" : topic,
-         "message" : message
-      }
-   return result
-
-
-# client = connect_mqtt()
-# print(client)
-# # msg = {
-# # "name" : "Lampu",
-# # "pin" : 1,
-# # "power" : "off"
-# # }
-# # print(publisher(client, 'homeatech', str(msg) ))
+    pub = client.publish(topic, message)
+    result = message
+    # try:
+    #     pub = client.publish(topic, message)
+    #     result = {
+    #         "success" : True,
+    #         "topic" : topic,
+    #         "message" : message
+    #     }
+    # except Exception as err:
+    #     result = {
+    #         "success" : False,
+    #         "topic" : topic,
+    #         "message" : message
+    #     }
+    return result
