@@ -21,3 +21,7 @@ class AppConfig:
 class Settings:
     JWT_SECRET = os.getenv('JWT_SECRET', 'QWERTYhgfdsaZXCVB%$#@!12345')
     JWT_ALGORITHM = os.getenv('JWT_ALGORITHM', 'HS256') 
+
+class Telegram:
+    TOKEN = os.getenv('TOKEN_TELEGRAM', '5537689921:AAED4cMDNOem654t1wG2j70gVNo6YqIy_5o11') 
+    CHAT_ID = os.getenv('CHAT_ID_TELEGRAM', '52026454711') 

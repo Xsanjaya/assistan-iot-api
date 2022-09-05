@@ -6,14 +6,13 @@ services:
       context: .
       dockerfile: Dockerfile
     
-    image: binar-api:latest
-    container_name: binar-api
+    image: jarvis-iot:latest
+    container_name: jarvis-iot
     networks:
       - net-gateway
     ports:
-      - 5001:5000
+      - 5005:5000
     volumes:
-      - /home/superman/dockerVolume/binarAPI/files:/app/data/files:rw
       - /home/superman/dockerVolume/binarAPI/migrations:/app/migrations:rw
     environment:
       - APP_NAME=BinarAPI

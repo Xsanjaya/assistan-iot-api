@@ -2,6 +2,7 @@ import os, datetime
 from flask import request, make_response, json
 from utils.auth_handler import AuthHandler
 from utils.mqtt_handler import connect_mqtt, publish_mqtt
+from utils.notification import telegram_notif
 
 auth = AuthHandler()
 
@@ -49,7 +50,7 @@ def set_mqtt():
 
 def assistant():
    req = request.json
-   # resp_param = req['queryResult']['parameters']
+   resp_param = req['session']['params']
    # client_id = f'python-mqtt-{os.urandom(32)}'
    # message = resp_param
    # topic = 'hometech'
@@ -62,5 +63,7 @@ def assistant():
    # mqtt_pub    = publish_mqtt(mqtt_client, topic, str(message) )
 
    resp_code = 200
-   print(f'\n{datetime.datetime.now()}\n', json.dumps(req['session']['params']),f'\n\n' )
-   return make_response(req, resp_code)
+
+   print(f'\n{datetime.datetime.now()}\n', json.dumps(resp_param),f'\n\n' )
+   telegram_notif(resp_param)
+   return make_response(json.dumps(resp_param), resp_code)
