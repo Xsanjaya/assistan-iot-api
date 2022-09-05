@@ -1,7 +1,5 @@
-from email import message
-import json
-import os
-from flask import request, make_response
+import os, datetime
+from flask import request, make_response, json
 from utils.auth_handler import AuthHandler
 from utils.mqtt_handler import connect_mqtt, publish_mqtt
 
@@ -49,20 +47,20 @@ def set_mqtt():
       resp_code = 403
    return make_response(json.dumps(resp), resp_code)
 
-def dialogflow():
+def assistant():
    req = request.json
-   resp_param = req['queryResult']['parameters']
-   client_id = f'python-mqtt-{os.urandom(32)}'
-   message = resp_param
-   topic = 'hometech'
-   host = 'xsanjaya.me'
-   port = 1883
-   username = 'xsanjaya'
-   password = 'jancokasu'
+   # resp_param = req['queryResult']['parameters']
+   # client_id = f'python-mqtt-{os.urandom(32)}'
+   # message = resp_param
+   # topic = 'hometech'
+   # host = 'xsanjaya.me'
+   # port = 1883
+   # username = 'xsanjaya'
+   # password = 'jancokasu'
 
-   mqtt_client = connect_mqtt(client_id, username, password, host, port)
-   mqtt_pub    = publish_mqtt(mqtt_client, topic, str(message) )
+   # mqtt_client = connect_mqtt(client_id, username, password, host, port)
+   # mqtt_pub    = publish_mqtt(mqtt_client, topic, str(message) )
 
    resp_code = 200
-   print(req,f'\n\n', resp_param)
+   print(f'\n{datetime.datetime.now()}\n', json.dumps(req['session']['params']),f'\n\n' )
    return make_response(req, resp_code)
